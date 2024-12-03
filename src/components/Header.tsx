@@ -7,7 +7,7 @@ const Header = () => {
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <span className="text-white font-bold text-2xl" >
-                        Students
+                        React Query
                     </span>
                     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -19,6 +19,9 @@ const Header = () => {
                             </li>
                             <li>
                                 <NavLink to="/create" className={({ isActive }) => `${isActive ? "text-blue-500" : "text-white"} block py-2 px-3`}>Create</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/products" className={({ isActive }) => `${isActive ? "text-blue-500" : "text-white"} block py-2 px-3`}>Products</NavLink>
                             </li>
                             {/* <li>
                                 <NavLink to="/update" className={({ isActive }) => `${isActive ? "text-blue-500" : "text-white"} block py-2 px-3`}>Update</NavLink>

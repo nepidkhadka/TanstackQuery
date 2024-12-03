@@ -6,4 +6,6 @@ export const QUERY_KEYS = {
   DELETESTUDENT: "deletestudent",
   USERS: "users",
   USER: "user",
+  PRODUCTS: "products",
+  PRODUCT: "product",
 };

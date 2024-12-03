@@ -4,7 +4,7 @@ import {
   createStudent,
   deleteStudent,
   updateStudent,
-} from "../../services/api";
+} from "../../services/studentsApi";
 import { QUERY_KEYS } from "../../utils/constant";
 
 export const useAddStudent = () => {

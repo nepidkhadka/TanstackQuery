@@ -3,6 +3,7 @@ import Home from "./components/Home"
 import Students from "./components/Students"
 import Create from "./components/Create"
 import Header from "./components/Header"
+import Products from "./components/Products"
 
 function App() {
 
@@ -53,6 +54,10 @@ function App() {
         <Route path="/students/update/:id" element={<>
           <Header />
           <Create />
+        </>} />
+        <Route path="/products/" element={<>
+          <Header />
+          <Products />
         </>} />
       </Routes>
 
