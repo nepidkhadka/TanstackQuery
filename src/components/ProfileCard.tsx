@@ -1,9 +1,10 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { Student } from "../utils/types"
 import { useDeleteStudent } from "../hooks/mutations/studentMutations"
 
 const ProfileCard = ({ data }: { data: Student }) => {
     const nav = useNavigate()
+    const { pathname } = useLocation();
 
     const { mutateAsync: deleteStudent } = useDeleteStudent(data.id)
 
@@ -24,7 +25,7 @@ const ProfileCard = ({ data }: { data: Student }) => {
             </div>
             <div className="p-2">
                 <h3 className="text-center text-xl text-gray-900 font-medium leading-8">{data.studentName}</h3>
-                <table className="text-xs my-3">
+                <table className="text-xs my-3 mx-auto">
                     <tbody>
                         <tr>
                             <td className="px-2 py-2 text-gray-500 font-semibold">Phone</td>
@@ -37,9 +38,16 @@ const ProfileCard = ({ data }: { data: Student }) => {
                     </tbody></table>
 
                 <div className="flex justify-center gap-4">
-                    <NavLink to={`/students/${data?.id}`} className="text-center my-3 cursor-pointer">
-                        <span className="text-xs bg-green-400 p-3 text-white italic rounded-sm hover:text-white font-medium">View Profile</span>
-                    </NavLink>
+                    {
+                        pathname == `/students/${data?.id}` ?
+                            <NavLink to={`/students/`} className="text-center my-3 cursor-pointer">
+                                <span className="text-xs bg-gray-600 p-3 text-white italic rounded-sm hover:text-white font-medium">Go Back</span>
+                            </NavLink>
+                            :
+                            <NavLink to={`/students/${data?.id}`} className="text-center my-3 cursor-pointer">
+                                <span className="text-xs bg-green-400 p-3 text-white italic rounded-sm hover:text-white font-medium">View Profile</span>
+                            </NavLink>
+                    }
                     {/* <div onClick={() => deleteStudent(data.id)} className="text-center my-3 cursor-pointer"> */}
                     <div onClick={() => handleDelete()} className="text-center my-3 cursor-pointer">
                         {/* <div className="text-center my-3 cursor-pointer"> */}

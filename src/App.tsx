@@ -4,6 +4,7 @@ import Students from "./components/Students"
 import Create from "./components/Create"
 import Header from "./components/Header"
 import Products from "./components/Products"
+import Student from "./components/Student"
 
 function App() {
 
@@ -28,7 +29,7 @@ function App() {
         </>} />
         <Route path="/students/:id" element={<>
           <Header />
-          <Home />
+          <Student />
         </>} />
         <Route path="/students/update/:id" element={<>
           <Header />
