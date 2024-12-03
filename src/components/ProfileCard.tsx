@@ -1,11 +1,21 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { Student } from "../utils/types"
 import { useDeleteStudent } from "../hooks/mutations/studentMutations"
 
 const ProfileCard = ({ data }: { data: Student }) => {
+    const nav = useNavigate()
 
-    const { mutate: deleteStudent } = useDeleteStudent(data.id)
-    // const { mutate: deleteStudent } = useDeleteStudent()
+    const { mutateAsync: deleteStudent } = useDeleteStudent(data.id)
+
+    const handleDelete = async () => {
+        try {
+            await deleteStudent()
+            nav("/students")
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div className="bg-white shadow-xl rounded-lg py-3">
@@ -31,7 +41,7 @@ const ProfileCard = ({ data }: { data: Student }) => {
                         <span className="text-xs bg-green-400 p-3 text-white italic rounded-sm hover:text-white font-medium">View Profile</span>
                     </NavLink>
                     {/* <div onClick={() => deleteStudent(data.id)} className="text-center my-3 cursor-pointer"> */}
-                    <div onClick={() => deleteStudent()} className="text-center my-3 cursor-pointer">
+                    <div onClick={() => handleDelete()} className="text-center my-3 cursor-pointer">
                         {/* <div className="text-center my-3 cursor-pointer"> */}
                         <span className="text-xs bg-red-400 p-3 text-white italic rounded-sm hover:text-white font-medium">Delete</span>
                     </div>

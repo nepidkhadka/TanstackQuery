@@ -50,18 +50,18 @@ const Create = () => {
                     <fieldset>{isEditMode ? "Update Student Details" : "Enter Student Details"}</fieldset>
                     <div className="my-5">
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">Student Name</label>
-                        <input id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com"   {...register("studentName", { required: "Name Is Required" })} />
+                        <input id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com"   {...register("studentName", { required: "Name Is Required", maxLength: 15 })} />
                         {errors.studentName && <span className="text-xs text-red-600" >Name is required</span>}
                     </div>
                     <div className="mb-5">
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">Student Email</label>
-                        <input id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter Student Email"{...register("studentEmail", { required: "Email Is Required" })} />
-                        {errors.studentEmail && <span className="text-xs text-red-600" >Email is required</span>}
+                        <input id="email" type="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter Student Email"{...register("studentEmail", { required: "Email Is Required", pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, })} />
+                        {errors.studentEmail && <span className="text-xs text-red-600" >Please Check Email</span>}
                     </div>
                     <div className="mb-5">
                         <label htmlFor="number" className="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
-                        <input id="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Eg. 987-0098-009" {...register("phoneNumber", { required: "Phone Number Is Required" })} />
-                        {errors.phoneNumber && <span className="text-xs text-red-600" >Phone Number is required</span>}
+                        <input id="number" type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Eg. 987-0098-009" {...register("phoneNumber", { required: "Phone Number Is Required" })} />
+                        {errors.phoneNumber && <span className="text-xs text-red-600" >Please Check Phone Number</span>}
                     </div>
                     {
                         isEditMode ?
