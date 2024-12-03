@@ -3,6 +3,7 @@ export const QUERY_KEYS = {
   STUDENT: "student",
   ADDSTUDENT: "addstudent",
   UPDATESTUDENT: "updatestudent",
+  DELETESTUDENT: "deletestudent",
   USERS: "users",
   USER: "user",
 };

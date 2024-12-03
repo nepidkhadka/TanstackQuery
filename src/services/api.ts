@@ -75,3 +75,18 @@ export const updateStudent = async (data: Student) => {
     throw error;
   }
 };
+
+// Delete Student
+export const deleteStudent = async (id: string) => {
+  try {
+    const response = await axiosInstance.delete(`/student/${id}`);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error: ", error.message);
+    } else {
+      console.error("Non-Axios error: ", error);
+    }
+    throw error;
+  }
+};

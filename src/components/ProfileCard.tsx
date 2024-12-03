@@ -1,13 +1,11 @@
 import { NavLink } from "react-router-dom"
 import { Student } from "../utils/types"
+import { useDeleteStudent } from "../hooks/mutations/studentMutations"
 
 const ProfileCard = ({ data }: { data: Student }) => {
 
-    // const [deleteStudent] = useDeleteStudentMutation()
-
-    // const handleClick = (id: string) => {
-    //     deleteStudent(id)
-    // }
+    const { mutate: deleteStudent } = useDeleteStudent(data.id)
+    // const { mutate: deleteStudent } = useDeleteStudent()
 
     return (
         <div className="bg-white shadow-xl rounded-lg py-3">
@@ -29,11 +27,12 @@ const ProfileCard = ({ data }: { data: Student }) => {
                     </tbody></table>
 
                 <div className="flex justify-center gap-4">
-                    {/* <div onClick={() => handleClick(data.id)} className="text-center my-3 cursor-pointer"> */}
                     <NavLink to={`/students/${data?.id}`} className="text-center my-3 cursor-pointer">
                         <span className="text-xs bg-green-400 p-3 text-white italic rounded-sm hover:text-white font-medium">View Profile</span>
                     </NavLink>
-                    <div className="text-center my-3 cursor-pointer">
+                    {/* <div onClick={() => deleteStudent(data.id)} className="text-center my-3 cursor-pointer"> */}
+                    <div onClick={() => deleteStudent()} className="text-center my-3 cursor-pointer">
+                        {/* <div className="text-center my-3 cursor-pointer"> */}
                         <span className="text-xs bg-red-400 p-3 text-white italic rounded-sm hover:text-white font-medium">Delete</span>
                     </div>
                     <NavLink to={`/students/update/${data?.id}`} className="text-center my-3 cursor-pointer">

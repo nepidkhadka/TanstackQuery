@@ -1,6 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Student } from "../../utils/types";
-import { createStudent, updateStudent } from "../../services/api";
+import {
+  createStudent,
+  deleteStudent,
+  updateStudent,
+} from "../../services/api";
 import { QUERY_KEYS } from "../../utils/constant";
 
 export const useAddStudent = () => {
@@ -42,6 +46,24 @@ export const useUpdateStudent = () => {
         queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDENTS] });
         queryClient.invalidateQueries({
           queryKey: [QUERY_KEYS.STUDENT, { id: variables.id }],
+        });
+      }
+    },
+  });
+};
+
+export const useDeleteStudent = (id: string) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    // mutationFn: (id: string) => deleteStudent(id),
+    mutationFn: () => deleteStudent(id),
+    mutationKey: [QUERY_KEYS.DELETESTUDENT, id],
+    onSettled: async (_, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        queryClient.invalidateQueries({
+          queryKey: [QUERY_KEYS.STUDENTS],
         });
       }
     },
