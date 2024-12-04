@@ -20,3 +20,17 @@ export const getProducts = async (page: number): Promise<Product[]> => {
     throw error;
   }
 };
+
+export const getProduct = async (id: string): Promise<Product> => {
+  try {
+    const { data } = await axiosInstance.get(`/products/${id}`);
+    return data.product;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error: ", error.message);
+    } else {
+      console.error("Non-Axios error: ", error);
+    }
+    throw error;
+  }
+};
