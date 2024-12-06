@@ -60,7 +60,7 @@ const Create = () => {
                     <fieldset>{isEditMode ? "Update Student Details" : "Enter Student Details"}</fieldset>
                     <div className="my-5">
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">Student Name</label>
-                        <input id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com"   {...register("studentName", { required: "Name Is Required", maxLength: 15 })} />
+                        <input id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com"   {...register("studentName", { required: "Name Is Required", maxLength: 40 })} />
                         {errors.studentName && <span className="text-xs text-red-600" >{errors.studentName?.message}</span>}
                     </div>
                     <div className="mb-5">
@@ -76,7 +76,7 @@ const Create = () => {
                     <div className="mb-5">
                         <label htmlFor="age" className="block mb-2 text-sm font-medium text-gray-900">Age</label>
                         <input id="age" type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Eg. 18" {...register("age", { required: "Age Is Required", min: { value: 18, message: "Minimum age is 18" } })} />
-                        {errors.age && <span className="text-xs text-red-600" >{errors.age.message}</span>}
+                        {errors.age && <span className="text-xs text-red-600" >{errors.age?.message}</span>}
                     </div>
                     <div className="mb-5">
                         <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900">Gender</label>
