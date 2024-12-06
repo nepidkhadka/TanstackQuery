@@ -6,7 +6,7 @@ const ProfileCard = ({ data }: { data: Student }) => {
     const nav = useNavigate()
     const { pathname } = useLocation();
 
-    const { mutateAsync: deleteStudent } = useDeleteStudent(data.id)
+    const { mutateAsync: deleteStudent } = useDeleteStudent(data.id!)
 
     const handleDelete = async () => {
         try {
@@ -34,6 +34,18 @@ const ProfileCard = ({ data }: { data: Student }) => {
                         <tr>
                             <td className="px-2 py-2 text-gray-500 font-semibold">Email</td>
                             <td className="px-2 py-2">{data.studentEmail}</td>
+                        </tr>
+                        <tr>
+                            <td className="px-2 py-2 text-gray-500 font-semibold">Address</td>
+                            <td className="px-2 py-2">{data.address}</td>
+                        </tr>
+                        <tr>
+                            <td className="px-2 py-2 text-gray-500 font-semibold">Joined Date</td>
+                            <td className="px-2 py-2">{data.startDate}</td>
+                        </tr>
+                        <tr>
+                            <td className="px-2 py-2 text-gray-500 font-semibold">Hobbies</td>
+                            <td className="px-2 py-2">{data.hobbies}</td>
                         </tr>
                     </tbody></table>
 

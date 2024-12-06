@@ -8,9 +8,7 @@
 // }
 
 export interface Student {
-  createdAt: string; // ISO date string
   studentName: string;
-  avatar: string; // URL string
   studentEmail: string;
   phoneNumber: string;
   age: number;
@@ -18,7 +16,7 @@ export interface Student {
   address: string;
   hobbies: string;
   startDate: string; // ISO date string
-  id: string; // Unique identifier
+  id?: string; // Unique identifier
 }
 
 export interface Product {
