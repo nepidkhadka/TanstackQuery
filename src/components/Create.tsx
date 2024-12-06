@@ -4,19 +4,8 @@ import { Student } from "../utils/types";
 import { useStudent } from "../hooks/queries/studentQueries";
 import { useAddStudent, useUpdateStudent } from "../hooks/mutations/studentMutations";
 import { useForm } from "react-hook-form";
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
 
-const studentSchema = z.object({
-    studentName: z.string().min(5, "Name Must Be Greater Than 1").nonempty("Name is required"),
-    studentEmail: z.string().email("Email is required"),
-    age: z.number().min(18, "Age must be greater than 18").nonnegative("Age must be greater than 0"),
-    phoneNumber: z.string().nonempty("Phone number is required"),
-    address: z.string().nonempty("Address is required"),
-    hobbies: z.string().nonempty("Hobbies is required"),
-    startDate: z.date(),
-    gender: z.enum(["male", "female", "other"], { message: "Gender is required" })
-})
+
 
 const Create = () => {
 
