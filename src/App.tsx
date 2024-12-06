@@ -6,6 +6,7 @@ import Header from "./components/Header"
 import Products from "./components/Products"
 import Student from "./components/Student"
 import Product from "./components/Product"
+import CreateUser from "./components/CreateUser"
 
 function App() {
 
@@ -43,6 +44,10 @@ function App() {
         <Route path="/products/:id" element={<>
           <Header />
           <Product />
+        </>} />
+        <Route path="/createuser/" element={<>
+          <Header />
+          <CreateUser />
         </>} />
       </Routes>
 
